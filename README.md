@@ -1,4 +1,4 @@
-# NN
+# Deep Learning
 
 _(Under progress)_
 
