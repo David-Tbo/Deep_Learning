@@ -1,62 +1,62 @@
-Pour un réseau de neurones simple avec un seul neurone, un input \( x \), un output \( y \), une fonction d'activation sigmoïde, et une fonction de perte quadratique, nous devons calculer les dérivées de la perte par rapport au poids \( w \) et au biais \( b \).
+Pour un réseau de neurones simple avec un seul neurone, un input$x$, un output$y$, une fonction d'activation sigmoïde, et une fonction de perte quadratique, nous devons calculer les dérivées de la perte par rapport au poids$w$et au biais$b$.
 
 ### Notations :
-- \( x \) : l'input
-- \( y \) : l'output réel
-- \( \hat{y} \) : l'output prédit par le neurone
-- \( w \) : le poids
-- \( b \) : le biais
-- \( \sigma(z) \) : la fonction d'activation sigmoïde, où \( z = wx + b \)
-- \( L \) : la fonction de perte quadratique
+-$x$: l'input
+-$y$: l'output réel
+-$\hat{y}$: l'output prédit par le neurone
+-$w$: le poids
+-$b$: le biais
+-$\sigma(z)$: la fonction d'activation sigmoïde, où$z = wx + b$
+-$L$: la fonction de perte quadratique
 
 ### Fonction Sigmoïde :
 La fonction sigmoïde est définie par :
-\[ \sigma(z) = \frac{1}{1 + e^{-z}} \]
+$\sigma(z) = \frac{1}{1 + e^{-z}}$
 
 ### Fonction de Perte Quadratique :
 La fonction de perte quadratique est définie par :
-\[ L = \frac{1}{2} (\hat{y} - y)^2 \]
+$L = \frac{1}{2} (\hat{y} - y)^2$
 
 ### Dérivée de la Fonction Sigmoïde :
-La dérivée de la fonction sigmoïde par rapport à son input \( z \) est :
-\[ \sigma'(z) = \sigma(z) (1 - \sigma(z)) \]
+La dérivée de la fonction sigmoïde par rapport à son input$z$est :
+$\sigma'(z) = \sigma(z) (1 - \sigma(z))$
 
 ### Calcul de l'Output Prédit :
-L'output prédit \( \hat{y} \) est donné par :
-\[ \hat{y} = \sigma(z) = \sigma(wx + b) \]
+L'output prédit$\hat{y}$est donné par :
+$\hat{y} = \sigma(z) = \sigma(wx + b)$
 
-### Dérivée de la Perte par Rapport à \( w \) :
-Pour trouver la dérivée de la perte par rapport à \( w \), nous utilisons la règle de la chaîne :
-\[ \frac{\partial L}{\partial w} = \frac{\partial L}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z} \cdot \frac{\partial z}{\partial w} \]
-
-Calculons chaque terme :
-1. \( \frac{\partial L}{\partial \hat{y}} = \hat{y} - y \)
-2. \( \frac{\partial \hat{y}}{\partial z} = \sigma'(z) = \sigma(z) (1 - \sigma(z)) \)
-3. \( \frac{\partial z}{\partial w} = x \)
-
-Donc,
-\[ \frac{\partial L}{\partial w} = (\hat{y} - y) \cdot \sigma(z) (1 - \sigma(z)) \cdot x \]
-
-### Dérivée de la Perte par Rapport à \( b \) :
-Pour trouver la dérivée de la perte par rapport à \( b \), nous utilisons également la règle de la chaîne :
-\[ \frac{\partial L}{\partial b} = \frac{\partial L}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z} \cdot \frac{\partial z}{\partial b} \]
+### Dérivée de la Perte par Rapport à$w$:
+Pour trouver la dérivée de la perte par rapport à$w$, nous utilisons la règle de la chaîne :
+$\frac{\partial L}{\partial w} = \frac{\partial L}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z} \cdot \frac{\partial z}{\partial w}$
 
 Calculons chaque terme :
-1. \( \frac{\partial L}{\partial \hat{y}} = \hat{y} - y \)
-2. \( \frac{\partial \hat{y}}{\partial z} = \sigma'(z) = \sigma(z) (1 - \sigma(z)) \)
-3. \( \frac{\partial z}{\partial b} = 1 \)
+1.$\frac{\partial L}{\partial \hat{y}} = \hat{y} - y$
+2.$\frac{\partial \hat{y}}{\partial z} = \sigma'(z) = \sigma(z) (1 - \sigma(z))$
+3.$\frac{\partial z}{\partial w} = x$
 
 Donc,
-\[ \frac{\partial L}{\partial b} = (\hat{y} - y) \cdot \sigma(z) (1 - \sigma(z)) \]
+$\frac{\partial L}{\partial w} = (\hat{y} - y) \cdot \sigma(z) (1 - \sigma(z)) \cdot x$
+
+### Dérivée de la Perte par Rapport à$b$:
+Pour trouver la dérivée de la perte par rapport à$b$, nous utilisons également la règle de la chaîne :
+$\frac{\partial L}{\partial b} = \frac{\partial L}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z} \cdot \frac{\partial z}{\partial b}$
+
+Calculons chaque terme :
+1.$\frac{\partial L}{\partial \hat{y}} = \hat{y} - y$
+2.$\frac{\partial \hat{y}}{\partial z} = \sigma'(z) = \sigma(z) (1 - \sigma(z))$
+3.$\frac{\partial z}{\partial b} = 1$
+
+Donc,
+$\frac{\partial L}{\partial b} = (\hat{y} - y) \cdot \sigma(z) (1 - \sigma(z))$
 
 ### Résumé des Équations :
-- Dérivée de la perte par rapport à \( w \) :
-\[ \frac{\partial L}{\partial w} = (\hat{y} - y) \cdot \sigma(z) (1 - \sigma(z)) \cdot x \]
+- Dérivée de la perte par rapport à$w$:
+$\frac{\partial L}{\partial w} = (\hat{y} - y) \cdot \sigma(z) (1 - \sigma(z)) \cdot x$
 
-- Dérivée de la perte par rapport à \( b \) :
-\[ \frac{\partial L}{\partial b} = (\hat{y} - y) \cdot \sigma(z) (1 - \sigma(z)) \]
+- Dérivée de la perte par rapport à$b$:
+$\frac{\partial L}{\partial b} = (\hat{y} - y) \cdot \sigma(z) (1 - \sigma(z))$
 
-Ces équations peuvent être utilisées pour mettre à jour les paramètres \( w \) et \( b \) en utilisant la descente de gradient.
+Ces équations peuvent être utilisées pour mettre à jour les paramètres$w$et$b$en utilisant la descente de gradient.
 
 ```python
 import numpy as np
